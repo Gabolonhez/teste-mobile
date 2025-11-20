@@ -2,9 +2,11 @@ import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useState } from 'react';
 import { useRouter } from 'expo-router';
+import { useMutation } from '@tanstack/react-query';
 import { Input, Button, ErrorMessage } from '@/components/ui';
 import { useOnboardingContext } from '../onboarding-context';
 import { createStyles } from '../onboarding.styles';
+import { authApi } from '@/lib/api';
 
 export const OnboardingStep2 = () => {
   const { data, updateData } = useOnboardingContext();
@@ -12,6 +14,36 @@ export const OnboardingStep2 = () => {
   const [error, setError] = useState('');
   const router = useRouter();
   const styles = createStyles();
+
+  const checkEmailMutation = useMutation({
+    mutationFn: async (emailToCheck: string) => {
+      try {
+        await authApi.register({
+          name: 'temp',
+          email: emailToCheck,
+          password: 'temp12345',
+          plan: 'Basic',
+        });
+        return { exists: false };
+      } catch (error: any) {
+        const message = error.response?.data?.message || '';
+        if (message.toLowerCase().includes('já existe') || 
+            message.toLowerCase().includes('already exists') ||
+            message.toLowerCase().includes('duplicat')) {
+          return { exists: true };
+        }
+        return { exists: false };
+      }
+    },
+    onSuccess: (result) => {
+      if (result.exists) {
+        setError('Este email já está em uso. Por favor, use outro email.');
+      } else {
+        updateData({ email });
+        router.push('/(auth)/onboarding/step3');
+      }
+    },
+  });
 
   const validateEmail = (email: string) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,8 +59,8 @@ export const OnboardingStep2 = () => {
       setError('Por favor, insira um email válido');
       return;
     }
-    updateData({ email });
-    router.push('/(auth)/onboarding/step3');
+    
+    checkEmailMutation.mutate(email);
   };
 
   const handleBack = () => {
@@ -71,7 +103,12 @@ export const OnboardingStep2 = () => {
       </ScrollView>
 
       <View style={styles.footer}>
-        <Button title="Continuar" onPress={handleNext} />
+        <Button 
+          title="Continuar" 
+          onPress={handleNext}
+          loading={checkEmailMutation.isPending}
+          disabled={checkEmailMutation.isPending}
+        />
       </View>
     </SafeAreaView>
   );

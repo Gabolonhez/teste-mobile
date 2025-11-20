@@ -12,6 +12,7 @@ export const useProfileLogic = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(user?.name || '');
   const [email, setEmail] = useState(user?.email || '');
+  const [plan, setPlan] = useState(user?.plan || '');
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [error, setError] = useState('');
@@ -28,6 +29,9 @@ export const useProfileLogic = () => {
       const response = await refetch();
       if (response.data?.user) {
         updateUser(response.data.user);
+        setName(response.data.user.name);
+        setEmail(response.data.user.email);
+        setPlan(response.data.user.plan);
       }
       setIsEditing(false);
       setOldPassword('');
@@ -53,14 +57,18 @@ export const useProfileLogic = () => {
   });
 
   const handleEdit = useCallback(() => {
+    setName(user?.name || '');
+    setEmail(user?.email || '');
+    setPlan(user?.plan || '');
     setIsEditing(true);
     setError('');
-  }, []);
+  }, [user]);
 
   const handleCancel = useCallback(() => {
     setIsEditing(false);
     setName(user?.name || '');
     setEmail(user?.email || '');
+    setPlan(user?.plan || '');
     setOldPassword('');
     setNewPassword('');
     setError('');
@@ -80,6 +88,7 @@ export const useProfileLogic = () => {
       userId: user.id,
       name,
       email,
+      plan,
     };
 
     if (newPassword) {
@@ -96,7 +105,7 @@ export const useProfileLogic = () => {
     }
 
     updateMutation.mutate(updateData);
-  }, [user, name, email, oldPassword, newPassword, updateMutation]);
+  }, [user, name, email, plan, oldPassword, newPassword, updateMutation]);
 
   const handleDelete = useCallback(() => {
     Alert.alert(
@@ -145,6 +154,8 @@ export const useProfileLogic = () => {
     setName,
     email,
     setEmail,
+    plan,
+    setPlan,
     oldPassword,
     setOldPassword,
     newPassword,

@@ -64,6 +64,27 @@ export const createStyles = () => {
     dangerButton: {
       backgroundColor: colors.error,
     },
+    planCard: {
+      backgroundColor: colors.white,
+      borderRadius: borderRadius.md,
+      padding: spacing.md,
+      borderWidth: 2,
+      borderColor: colors.border,
+    },
+    planCardSelected: {
+      borderColor: colors.primary,
+      backgroundColor: 'rgba(108, 99, 255, 0.05)',
+    },
+    planName: {
+      fontSize: fontSize.lg,
+      fontWeight: fontWeight.semiBold,
+      color: colors.text,
+      marginBottom: spacing.xs,
+    },
+    planDescription: {
+      fontSize: fontSize.sm,
+      color: colors.textLight,
+    },
     footer: {
       paddingHorizontal: spacing.xl,
       paddingVertical: spacing.lg,
