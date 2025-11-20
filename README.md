@@ -1,4 +1,4 @@
-# Test Mobile - React Native/Expo App
+# Teste Técnico Mobile - React Native/Expo App
 
 Aplicativo mobile React Native/Expo para gerenciamento de usuários, desenvolvido com TypeScript, React Query, Zustand e Expo Router.
 
