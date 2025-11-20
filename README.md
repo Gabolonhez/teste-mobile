@@ -1,4 +1,4 @@
-# Teste Técnico Mobile
+# Teste técnico mobile
 
 Aplicativo mobile React Native/Expo para gerenciamento de usuários com autenticação, perfil e planos.
 
