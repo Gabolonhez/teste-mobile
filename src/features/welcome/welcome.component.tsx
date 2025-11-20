@@ -16,7 +16,7 @@ export const WelcomeScreen = () => {
         
         <Text style={styles.title}>Bem-vindo!</Text>
         <Text style={styles.subtitle}>
-          Se cadastre ou faça login agora mesmo.
+          Cadastre-se ou faça login agora.
         </Text>
 
         <View style={styles.buttonContainer}>
