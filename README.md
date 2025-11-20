@@ -12,7 +12,7 @@ Aplicativo mobile React Native/Expo para gerenciamento de usuários com autentic
 ### Instalação
 
 ```bash
-# Clonar e acessar o repositório
+# Clonar 
 git clone https://github.com/Gabolonhez/teste-mobile.git
 cd teste-mobile
 
