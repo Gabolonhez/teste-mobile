@@ -21,4 +21,6 @@ npm install
 
 # Iniciar servidor
 npm start
+
+# No seu dispositivo (Android ou iOS), abrir o aplicativo Expo Go e escanear o QR Code. 
 ```
