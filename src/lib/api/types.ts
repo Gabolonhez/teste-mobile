@@ -38,6 +38,7 @@ export interface UpdateUserRequest {
   email: string;
   oldPassword?: string;
   password?: string;
+  plan?: string;
 }
 
 export interface UpdateUserResponse {

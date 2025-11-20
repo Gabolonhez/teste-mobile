@@ -12,6 +12,8 @@ export const ProfileScreen = () => {
     setName,
     email,
     setEmail,
+    plan,
+    setPlan,
     oldPassword,
     setOldPassword,
     newPassword,
@@ -122,9 +124,36 @@ export const ProfileScreen = () => {
 
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>Plano Atual</Text>
-          <Text style={{ fontSize: 16, color: '#6C757D', marginBottom: 16 }}>
-            Você está no plano <Text style={{ fontWeight: '600' }}>{user?.plan}</Text>
-          </Text>
+          {isEditing ? (
+            <View style={{ gap: 12, marginTop: 8 }}>
+              {[
+                { id: 'basic', name: 'Basic', description: 'Ideal para começar e explorar recursos básicos' },
+                { id: 'pro', name: 'Pro', description: 'Para usuários avançados com recursos premium' },
+                { id: 'premium', name: 'Premium', description: 'Acesso completo a todos os recursos e suporte prioritário' },
+              ].map((planOption) => (
+                <TouchableOpacity
+                  key={planOption.id}
+                  style={[
+                    styles.planCard,
+                    plan === planOption.name && styles.planCardSelected,
+                  ]}
+                  onPress={() => {
+                    setPlan(planOption.name);
+                    setError('');
+                  }}
+                  activeOpacity={0.7}
+                  disabled={isLoading}
+                >
+                  <Text style={styles.planName}>{planOption.name}</Text>
+                  <Text style={styles.planDescription}>{planOption.description}</Text>
+                </TouchableOpacity>
+              ))}
+            </View>
+          ) : (
+            <Text style={{ fontSize: 16, color: '#6C757D', marginBottom: 16 }}>
+              Você está no plano <Text style={{ fontWeight: '600' }}>{user?.plan}</Text>
+            </Text>
+          )}
         </View>
 
         <View style={styles.card}>
