@@ -11,8 +11,8 @@ import { useAuthStore } from '@/store';
 
 const PLANS = [
   {
-    id: 'basic',
-    name: 'Basic',
+    id: 'basico',
+    name: 'Basico',
     description: 'Ideal para começar e explorar recursos básicos',
   },
   {
@@ -47,8 +47,14 @@ export const OnboardingStep4 = () => {
       router.replace('/(app)/home');
     },
     onError: (error: any) => {
-      const message = error.response?.data?.message || 'Erro ao criar conta. Tente novamente.';
-      setError(message);
+      const message = error.response?.data?.message || '';
+      if (message.toLowerCase().includes('already exists') || 
+          message.toLowerCase().includes('já existe') ||
+          message.toLowerCase().includes('duplicat')) {
+        setError('Este email já está em uso. Por favor, volte e use outro email ou faça login.');
+      } else {
+        setError(message || 'Erro ao criar conta. Tente novamente.');
+      }
     },
   });
 
