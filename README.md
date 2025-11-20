@@ -1,4 +1,4 @@
-# Test Mobile - Aplicativo de Gerenciamento de Usuários
+# Teste Técnico Mobile 
 
 > Aplicativo mobile desenvolvido com React Native/Expo para gerenciamento completo de usuários, incluindo autenticação, perfil e seleção de planos.
 
@@ -447,10 +447,3 @@ O app utiliza um sistema de design tokens consistente:
 - O plano não pode conter "notConfigured"
 - O health check é atualizado automaticamente a cada 30 segundos
 
-## 👤 Desenvolvedor
-
-Projeto desenvolvido seguindo as especificações do teste técnico.
-
----
-
-**Última atualização**: Novembro 2024
