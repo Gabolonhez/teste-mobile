@@ -187,10 +187,3 @@ O app utiliza um sistema de design tokens consistente:
 - O plano não pode conter "notConfigured"
 - O health check é atualizado automaticamente a cada 30 segundos
 
-## 👤 Desenvolvedor
-
-Projeto desenvolvido seguindo as especificações do teste técnico.
-
----
-
-**Última atualização**: Novembro 2024
