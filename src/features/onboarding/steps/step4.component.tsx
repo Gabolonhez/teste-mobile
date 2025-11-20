@@ -11,8 +11,8 @@ import { useAuthStore } from '@/store';
 
 const PLANS = [
   {
-    id: 'basico',
-    name: 'Basico',
+    id: 'basic',
+    name: 'Basic',
     description: 'Ideal para começar e explorar recursos básicos',
   },
   {

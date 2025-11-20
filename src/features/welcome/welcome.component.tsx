@@ -16,7 +16,7 @@ export const WelcomeScreen = () => {
         
         <Text style={styles.title}>Bem-vindo!</Text>
         <Text style={styles.subtitle}>
-          Gerencie seus usuários de forma simples e eficiente
+          Se cadastre ou faça login agora mesmo.
         </Text>
 
         <View style={styles.buttonContainer}>
