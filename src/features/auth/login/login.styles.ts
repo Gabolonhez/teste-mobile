@@ -23,6 +23,12 @@ export const createStyles = () => {
     backButtonText: {
       fontSize: fontSize.lg,
     },
+    scrollView: {
+      flex: 1,
+    },
+    scrollContent: {
+      flexGrow: 1,
+    },
     content: {
       flex: 1,
       paddingHorizontal: spacing.xl,
@@ -41,7 +47,11 @@ export const createStyles = () => {
       lineHeight: 24,
     },
     form: {
-      marginBottom: spacing.lg,
+      marginBottom: spacing.xl,
+    },
+    buttonContainer: {
+      marginTop: spacing.lg,
+      paddingBottom: spacing.xl,
     },
     footer: {
       paddingHorizontal: spacing.xl,
